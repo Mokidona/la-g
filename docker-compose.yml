@@ -1,0 +1,36 @@
+services:
+  landing:
+    build: .
+    image: rehab-landing:latest
+    container_name: rehab-landing
+    restart: unless-stopped
+    networks:
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.rehab-landing.rule=Host(`kinesiolife.kz`)"
+      - "traefik.http.routers.rehab-landing.entrypoints=websecure"
+      - "traefik.http.routers.rehab-landing.tls.certresolver=myresolver"
+      - "traefik.http.services.rehab-landing.loadbalancer.server.port=80"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.25'
+        reservations:
+          memory: 32M
+
+networks:
+  traefik-public:
+    external: true
