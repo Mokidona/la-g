@@ -99,12 +99,22 @@ docker compose up -d --build
 - Контейнер слушает порт **3000**, Traefik проксирует на него домен
   `kinesiolife.kz` (см. `docker-compose.yml`).
 - Контент, картинки и пароль сохраняются в именованном томе `landing-data`.
+- Контейнер стартует через `entrypoint.sh`: он выставляет владельца каталога
+  `/data` и сбрасывает права до пользователя `node`, поэтому том можно не
+  готовить вручную (в том числе при bind mount).
 - Пароль задаётся переменной `ADMIN_PASSWORD` или генерируется при первом
   запуске: `docker compose logs landing`.
 
 ```bash
 # если нужно посмотреть сгенерированный пароль
 docker compose exec landing cat /data/admin-password.txt
+```
+
+Если после смены `Dockerfile` контейнер всё ещё работает по-старому, пересоберите
+образ — `docker compose up -d` сам его не пересобирает:
+
+```bash
+docker compose build landing && docker compose up -d --force-recreate landing
 ```
 
 `Caddyfile` больше не используется: заголовки безопасности, кеширование и gzip
