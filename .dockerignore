@@ -1,5 +1,7 @@
 .git
 .freebuff
+data
+node_modules
 .DS_Store
 .env
 figma-token.txt

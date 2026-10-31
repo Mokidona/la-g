@@ -24,6 +24,9 @@
   --g-box: #EBEBEB;
   --muted: #B3B3B3;
 
+  /* Узор блоков «Когда» и «Сплит»: путь подставляется из настроек админки. */
+  --pattern: url("/assets/pattern.jpg");
+
   --r: max(10px, calc(17 * var(--u)));
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-manrope: 'Manrope', 'Inter', sans-serif;
@@ -77,12 +80,6 @@ button { font: inherit; color: inherit; }
   font-size: clamp(13px, calc(18 * var(--u)), 26px);
   line-height: 1.21;
   padding: clamp(7px, calc(5 * var(--u)), 12px) clamp(20px, calc(33 * var(--u)), 46px);
-}
-
-.btn--card {
-  font-size: clamp(11px, calc(13 * var(--u)), 19px);
-  line-height: 1.21;
-  padding: clamp(6px, calc(4 * var(--u)), 9px) clamp(18px, calc(30 * var(--u)), 40px);
 }
 
 .btn--md {
@@ -163,7 +160,11 @@ button { font: inherit; color: inherit; }
   place-items: center;
   flex: none;
 }
-.social img { width: 74%; height: auto; }
+.social img {
+  /* В макете иконки 26–32 px в кружке 36 px; +2,5 px по просьбе заказчика */
+  width: calc(74% + 2.5px);
+  height: auto;
+}
 
 .hero__center {
   margin: calc(117 * var(--u)) auto auto;
@@ -203,33 +204,6 @@ button { font: inherit; color: inherit; }
   border-radius: var(--r) 0 0 var(--r);
 }
 
-.hero__card {
-  position: absolute;
-  right: calc(40 * var(--u));
-  bottom: calc(26 * var(--u));
-  width: calc(287 * var(--u));
-  background: #F2F2F2;
-  border-radius: var(--r);
-  padding: calc(29 * var(--u)) calc(24 * var(--u)) calc(17 * var(--u));
-  display: flex;
-  flex-direction: column;
-}
-
-.hero__card-title {
-  font-size: clamp(11px, calc(14 * var(--u)), 21px);
-  font-weight: 400;
-  line-height: 1.21;
-}
-
-.hero__card-text {
-  margin-top: calc(6 * var(--u));
-  font-size: clamp(10px, calc(13 * var(--u)), 19px);
-  font-weight: 300;
-  line-height: 1.21;
-}
-
-.hero__card .btn { margin-top: calc(18 * var(--u)); align-self: center; }
-
 /* ============================================================
    КАК ПРОХОДИТ ДИАГНОСТИКА
    ============================================================ */
@@ -265,7 +239,7 @@ button { font: inherit; color: inherit; }
 .step__num {
   position: absolute;
   top: calc(34 * var(--u));
-  right: calc(18 * var(--u));
+  left: calc(30 * var(--u));
   font-size: clamp(12px, calc(20 * var(--u)), 30px);
   font-weight: 500;
   line-height: 1.06;
@@ -296,7 +270,7 @@ button { font: inherit; color: inherit; }
    ============================================================ */
 .when {
   background-color: var(--g-when);
-  background-image: url("assets/pattern.jpg");
+  background-image: var(--pattern);
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
@@ -345,11 +319,12 @@ button { font: inherit; color: inherit; }
 }
 
 .when__card-title {
+  font-family: var(--font-manrope);
   font-size: clamp(15px, calc(24 * var(--u)), 36px);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.06;
 }
-.when__card-title b { font-weight: 600; }
+.when__card-title b { font-weight: 500; }
 
 .when__card-text {
   margin-top: calc(20 * var(--u));
@@ -358,7 +333,12 @@ button { font: inherit; color: inherit; }
   line-height: 1.06;
 }
 
-.when__card .btn { margin-top: calc(24 * var(--u)); display: inline-flex; align-self: center; }
+.when__card .btn {
+  margin-top: calc(24 * var(--u));
+  display: flex;
+  width: fit-content;
+  margin-inline: auto;
+}
 
 /* ============================================================
    ПАКЕТЫ
@@ -368,10 +348,28 @@ button { font: inherit; color: inherit; }
   padding: calc(68 * var(--u)) calc(82 * var(--u)) calc(64 * var(--u));
 }
 
+.packages__title {
+  margin-bottom: calc(38 * var(--u));
+  text-align: center;
+  font-size: clamp(19px, calc(32 * var(--u)), 45px);
+  font-weight: 600;
+  line-height: 1.21;
+}
+
+.packages__note {
+  margin-top: calc(36 * var(--u));
+  text-align: center;
+  font-size: clamp(13px, calc(18 * var(--u)), 26px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
 .packages__row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: calc(96 * var(--u));
+  column-gap: calc(96 * var(--u));
+  /* В исходном макете второй ряд пакетов отстоял от первого на 35u. */
+  row-gap: calc(35 * var(--u));
   align-items: start;
 }
 
@@ -456,7 +454,7 @@ button { font: inherit; color: inherit; }
   min-height: calc(474 * var(--u));
   padding: calc(22 * var(--u));
   background-color: var(--lime-soft);
-  background-image: url("assets/pattern.jpg");
+  background-image: var(--pattern);
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
@@ -495,7 +493,7 @@ button { font: inherit; color: inherit; }
 .services__media img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 858 / 362;
+  aspect-ratio: 858 / 420;
   object-fit: cover;
   border-radius: var(--r);
 }
@@ -746,6 +744,9 @@ button { font: inherit; color: inherit; }
   font-size: clamp(64px, calc(128 * var(--u)), 168px);
   line-height: .82;
   margin-top: calc(-6 * var(--u));
+  /* Глиф кавычки сидит в верхней части строки: опускаем до уровня заголовка,
+     как в макете, не меняя высоту блока. */
+  transform: translateY(.33em);
 }
 
 .reviews__title {
@@ -915,7 +916,9 @@ button { font: inherit; color: inherit; }
   letter-spacing: 0.01em;
   line-height: 1.1;
 }
-.footer__logo span {
+.footer__logo-part { color: inherit; padding: 0; }
+
+.footer__logo-dot {
   color: var(--lime-soft);
   padding: 0 calc(4 * var(--u));
 }
@@ -1009,7 +1012,6 @@ button { font: inherit; color: inherit; }
   .hero__media { min-height: 0; aspect-ratio: 16 / 10; }
   /* Фото во всю ширину: низ стыкуется с серой секцией, скругляем верх. */
   .hero__photo { border-radius: var(--r) var(--r) 0 0; }
-  .hero__card { width: calc(360 * var(--u)); }
 
   .steps__grid { grid-template-columns: repeat(2, 1fr); }
   .step { min-height: calc(210 * var(--u)); }
@@ -1055,7 +1057,6 @@ button { font: inherit; color: inherit; }
 
   .btn--hero { font-size: clamp(13px, calc(14 * var(--u)), 14px); padding: calc(9 * var(--u)) calc(20 * var(--u)); }
   .btn--md { font-size: clamp(13px, calc(16 * var(--u)), 16px); padding: calc(8 * var(--u)) calc(20 * var(--u)); }
-  .btn--card { font-size: clamp(11px, calc(13 * var(--u)), 13px); }
 
   /* ---------- ГЕРОЙ ---------- */
   .hero {
@@ -1083,17 +1084,6 @@ button { font: inherit; color: inherit; }
   .hero__subtitle { margin-top: calc(12 * var(--u)); font-size: clamp(11px, calc(12 * var(--u)), 12px); }
   .hero__center .btn { margin-top: calc(19 * var(--u)); }
   .hero__media { aspect-ratio: 440 / 329; min-height: 0; }
-  .hero__card {
-    left: calc(18 * var(--u));
-    right: calc(18 * var(--u));
-    bottom: calc(16 * var(--u));
-    width: auto;
-    padding: calc(15 * var(--u)) calc(15 * var(--u)) calc(13 * var(--u));
-    border-radius: calc(14 * var(--u));
-  }
-  .hero__card-title { font-size: clamp(11px, calc(13 * var(--u)), 13px); }
-  .hero__card-text { margin-top: calc(4 * var(--u)); font-size: clamp(10px, calc(11 * var(--u)), 12px); }
-  .hero__card .btn { margin-top: calc(11 * var(--u)); align-self: stretch; }
 
   /* ---------- ЭТАПЫ: горизонтальная прокрутка ---------- */
   .steps {
@@ -1138,7 +1128,7 @@ button { font: inherit; color: inherit; }
   }
   .step__num {
     top: calc(34 * var(--u));
-    right: calc(28 * var(--u));
+    left: calc(31 * var(--u));
     font-size: clamp(15px, calc(20 * var(--u)), 20px);
   }
   .step__text {
@@ -1181,7 +1171,16 @@ button { font: inherit; color: inherit; }
   .when__card .btn { margin-top: calc(18 * var(--u)); }
 
   /* ---------- ПАКЕТЫ ---------- */
-  .packages { padding: calc(30 * var(--u)) calc(39 * var(--u)) calc(60 * var(--u)); }
+  .packages { padding: calc(34 * var(--u)) calc(39 * var(--u)) calc(60 * var(--u)); }
+  .packages__title {
+    margin-bottom: calc(26 * var(--u));
+    font-size: clamp(16px, calc(20 * var(--u)), 20px);
+  }
+  .packages__note {
+    margin-top: calc(28 * var(--u));
+    font-size: clamp(12px, calc(15 * var(--u)), 15px);
+    line-height: 1.35;
+  }
   .packages__row,
   .packages__row--bottom {
     display: flex;
