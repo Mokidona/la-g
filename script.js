@@ -76,10 +76,10 @@ if (bookingModal) {
   });
 }
 
-/* Язык сайта: RU/KZ рендерится сервером по ссылке ?lang=….
-   Выбор запоминается и применяется при следующем заходе без параметра. */
+/* Язык сайта: две статические страницы — index.html (RU) и kz.html (KZ).
+   Выбор запоминается и применяется при следующем заходе. */
 
-const selectedLang = new URLSearchParams(window.location.search).get('lang');
+const pageLang = document.documentElement.lang === 'kk' ? 'kz' : 'ru';
 
 document.querySelectorAll('.lang__btn[data-lang]').forEach((link) => {
   link.addEventListener('click', () => {
@@ -91,10 +91,10 @@ document.querySelectorAll('.lang__btn[data-lang]').forEach((link) => {
   });
 });
 
-if (!selectedLang) {
+if (pageLang === 'ru') {
   try {
     if (localStorage.getItem('lfk-lang') === 'kz') {
-      window.location.replace('?lang=kz');
+      window.location.replace('kz.html');
     }
   } catch (error) {
     /* приватный режим — остаёмся на русской версии */

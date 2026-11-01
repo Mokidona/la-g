@@ -4,15 +4,6 @@ services:
     image: rehab-landing:latest
     container_name: rehab-landing
     restart: unless-stopped
-    environment:
-      # Задайте пароль админки при первом запуске. Если пусто — сервер
-      # сгенерирует пароль и запишет его в /data/admin-password.txt.
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-}
-      - PORT=3000
-      - DATA_DIR=/data
-    volumes:
-      # Контент сайта, загруженные картинки и пароль админки.
-      - landing-data:/data
     networks:
       - traefik-public
     labels:
@@ -21,9 +12,9 @@ services:
       - "traefik.http.routers.rehab-landing.rule=Host(`kinesiolife.kz`)"
       - "traefik.http.routers.rehab-landing.entrypoints=websecure"
       - "traefik.http.routers.rehab-landing.tls.certresolver=myresolver"
-      - "traefik.http.services.rehab-landing.loadbalancer.server.port=3000"
+      - "traefik.http.services.rehab-landing.loadbalancer.server.port=80"
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/healthz"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/healthz"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -35,13 +26,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 192M
-          cpus: '0.35'
-        reservations:
           memory: 64M
-
-volumes:
-  landing-data:
+          cpus: '0.25'
+        reservations:
+          memory: 32M
 
 networks:
   traefik-public:
