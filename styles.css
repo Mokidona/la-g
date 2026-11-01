@@ -1,3 +1,15 @@
+/* Локальные копии Inter, Manrope и Gravitas One (лицензия SIL OFL 1.1).
+   Наборы: latin, cyrillic, cyrillic-ext — этого хватает для RU и KZ.
+   Файл собирается скриптом, вручную не правится. */
+
+@font-face{font-family:'Gravitas One';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/gravitas-one-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/inter-300-700-cyrillic-ext.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/inter-300-700-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/inter-300-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/manrope-300-700-cyrillic-ext.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/manrope-300-700-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/manrope-300-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
 /* ============================================================
    Реабилитация и ЛФК в Астане — вёрстка по макету Figma
    (yuliya-12-desktop, page "main", 1440px)
@@ -25,7 +37,7 @@
   --muted: #B3B3B3;
 
   /* Узор блоков «Когда» и «Сплит»: путь подставляется из настроек админки. */
-  --pattern: url("assets/pattern.jpg");
+  --pattern: url("assets/pattern.webp");
 
   --r: max(10px, calc(17 * var(--u)));
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -423,7 +435,8 @@ button { font: inherit; color: inherit; }
 .pkg__ok img { width: 55%; }
 
 .pkg__list li.is-off {
-  color: var(--muted);
+  /* Было #B3B3B3 — контраст 2:1 на белом, ниже порога WCAG 4.5:1 */
+  color: #5F5F5F;
   padding-left: calc(31 * var(--u));
   text-decoration: line-through;
   text-decoration-thickness: 1px;
@@ -475,10 +488,11 @@ button { font: inherit; color: inherit; }
 /* На лаймовой карточке кружок галочки делаем белым, иначе он сливается с фоном */
 .split .pkg__ok { background: #fff; }
 
-/* Исключённые пункты на лаймовой карточке — белые и зачёркнутые */
+/* Исключённые пункты на лаймовой карточке — зачёркнутые и приглушённые,
+   но с контрастом выше 4.5:1 (белый на лайме давал около 1,1:1) */
 .split .pkg__list li.is-off {
-  color: #fff;
-  text-decoration-color: #fff;
+  color: #5F5F5F;
+  text-decoration-color: #5F5F5F;
 }
 
 /* Цена сплит-формата есть только в мобильном макете, кнопка — везде */
@@ -1044,7 +1058,7 @@ button { font: inherit; color: inherit; }
 .footer__bottom p {
   margin: 0;
   font-size: clamp(11px, calc(12 * var(--u)), 13px);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .lang--footer { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.18); }
@@ -1723,4 +1737,179 @@ body.is-locked { overflow: hidden; }
     font-size: clamp(13px, calc(15 * var(--u)), 15px);
     line-height: 1.4;
   }
+}
+
+/* ============================================================
+   ВНУТРЕННЯЯ СТРАНИЦА (insult.html): компактная шапка,
+   текстовый блок, хлебные крошки, списки и врезка
+   ============================================================ */
+
+.page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(20 * var(--u));
+  padding: calc(20 * var(--u)) calc(46 * var(--u));
+  background: #fff;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.page-top__logo {
+  font-family: var(--font-manrope);
+  font-size: clamp(17px, calc(24 * var(--u)), 26px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.page-top__dot { color: var(--purple); padding: 0 calc(4 * var(--u)); }
+
+.page-top__right { display: flex; align-items: center; gap: calc(22 * var(--u)); }
+
+.page-top__back {
+  font-size: clamp(12px, calc(14 * var(--u)), 15px);
+  color: rgba(0, 0, 0, 0.55);
+  transition: color 0.15s;
+}
+.page-top__back:hover { color: var(--purple); }
+
+.page-top__phone {
+  font-size: clamp(13px, calc(16 * var(--u)), 18px);
+  font-weight: 600;
+}
+.page-top__phone:hover { color: var(--purple); }
+
+.page-head {
+  background: var(--lime);
+  padding: calc(46 * var(--u)) calc(46 * var(--u)) calc(56 * var(--u));
+}
+
+.page-head__inner { max-width: calc(900 * var(--u)); margin: 0 auto; }
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  font-size: clamp(11px, calc(13 * var(--u)), 14px);
+  color: rgba(0, 0, 0, 0.55);
+}
+.breadcrumbs a:hover { color: var(--purple); }
+
+.page-head h1 {
+  margin-top: calc(20 * var(--u));
+  max-width: calc(760 * var(--u));
+  font-size: clamp(21px, calc(38 * var(--u)), 52px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.page-head__lead {
+  margin-top: calc(18 * var(--u));
+  max-width: calc(650 * var(--u));
+  font-size: clamp(13px, calc(18 * var(--u)), 21px);
+  line-height: 1.4;
+}
+
+.page-head .btn { margin-top: calc(26 * var(--u)); }
+
+.article { padding: calc(60 * var(--u)) calc(46 * var(--u)) calc(72 * var(--u)); }
+
+.article__inner {
+  display: grid;
+  gap: calc(40 * var(--u));
+  max-width: calc(820 * var(--u));
+  margin: 0 auto;
+}
+
+.article__block h2 {
+  font-size: clamp(18px, calc(26 * var(--u)), 32px);
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.article__block p {
+  margin-top: calc(14 * var(--u));
+  font-size: clamp(14px, calc(18 * var(--u)), 20px);
+  line-height: 1.5;
+}
+.article__block p + p { margin-top: calc(12 * var(--u)); }
+.article__block .btn { margin-top: calc(18 * var(--u)); }
+
+.article-list {
+  display: grid;
+  gap: calc(10 * var(--u));
+  margin-top: calc(16 * var(--u));
+}
+
+.article-list li {
+  position: relative;
+  padding-left: calc(24 * var(--u));
+  font-size: clamp(14px, calc(18 * var(--u)), 20px);
+  line-height: 1.45;
+}
+
+.article-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: max(6px, calc(8 * var(--u)));
+  height: max(6px, calc(8 * var(--u)));
+  border-radius: 50%;
+  background: var(--purple);
+}
+
+/* Нумерованные шаги первого занятия */
+.article-list--steps { counter-reset: step; gap: calc(14 * var(--u)); }
+.article-list--steps li { padding-left: calc(40 * var(--u)); }
+.article-list--steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: max(24px, calc(28 * var(--u)));
+  height: max(24px, calc(28 * var(--u)));
+  border-radius: 50%;
+  background: var(--lime-soft);
+  color: #000;
+  font-size: clamp(11px, calc(13 * var(--u)), 14px);
+  font-weight: 600;
+}
+
+.article__note {
+  margin-top: calc(18 * var(--u));
+  padding: calc(16 * var(--u)) calc(20 * var(--u));
+  border-left: 3px solid var(--purple);
+  border-radius: 0 var(--r) var(--r) 0;
+  background: var(--g-step);
+  font-size: clamp(12px, calc(14 * var(--u)), 15px);
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.inline-link {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.inline-link:hover { color: var(--purple-deep); }
+
+@media (max-width: 560px) {
+  .page-top { padding: calc(16 * var(--u)) calc(18 * var(--u)); }
+  .page-top__right { gap: calc(14 * var(--u)); }
+  .page-top__back { display: none; }
+
+  .page-head { padding: calc(30 * var(--u)) calc(18 * var(--u)) calc(36 * var(--u)); }
+  .page-head h1 { font-size: clamp(18px, calc(26 * var(--u)), 26px); }
+  .page-head__lead { font-size: clamp(12px, calc(15 * var(--u)), 15px); }
+
+  .article { padding: calc(34 * var(--u)) calc(18 * var(--u)) calc(44 * var(--u)); }
+  .article__inner { gap: calc(28 * var(--u)); }
+  .article__block h2 { font-size: clamp(16px, calc(20 * var(--u)), 20px); }
+  .article__block p,
+  .article-list li { font-size: clamp(14px, calc(16 * var(--u)), 16px); }
+
+  .faq { padding: calc(40 * var(--u)) calc(18 * var(--u)); }
 }
