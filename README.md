@@ -34,6 +34,9 @@ styles.css          стили лендинга
 script.js           аккордеон FAQ, окно записи, переключатель языка
 assets/             фотографии, иконки, узор
 assets/uploads/     изображения, загруженные ранее через админку
+robots.txt          разрешает индексацию и указывает на sitemap
+sitemap.xml         карта сайта с hreflang для RU и KZ
+favicon.svg         иконка сайта
 Caddyfile           статическая раздача, кеш и заголовки безопасности
 Dockerfile          образ caddy:2-alpine со статикой
 docker-compose.yml  запуск за Traefik для kinesiolife.kz
@@ -72,3 +75,23 @@ docker compose build landing && docker compose up -d --force-recreate landing
 curl -I https://kinesiolife.kz/
 curl -I https://kinesiolife.kz/kz.html
 ```
+
+## SEO
+
+У каждой страницы свои `title`, `description`, `canonical` и взаимные
+`hreflang` (`ru` — главная, `kk` — `kz.html`, `x-default` — главная).
+В разметке есть микроразметка Schema.org: `MedicalBusiness` (название, телефон,
+город, соцсети) и `FAQPage` с вопросами из секции FAQ. Первое фото грузится
+с `fetchpriority="high"`, остальные — `loading="lazy"`.
+
+После деплоя проверьте, что служебные файлы доступны:
+
+```bash
+curl -sI https://kinesiolife.kz/robots.txt
+curl -sI https://kinesiolife.kz/sitemap.xml
+```
+
+Дальше сайт добавляется в Google Search Console (свойство типа «Домен»
+проверяется DNS-записью) и туда же отправляется `sitemap.xml`.
+Для статистики посещений подключается Google Analytics 4 или Яндекс Метрика —
+счётчик вставляется в `<head>` обеих страниц.

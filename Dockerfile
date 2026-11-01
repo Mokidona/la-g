@@ -3,6 +3,7 @@ FROM caddy:2-alpine
 COPY Caddyfile /etc/caddy/Caddyfile
 
 COPY index.html kz.html styles.css script.js /srv/
+COPY robots.txt sitemap.xml favicon.svg /srv/
 COPY assets /srv/assets
 
 EXPOSE 80

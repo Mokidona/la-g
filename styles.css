@@ -542,6 +542,7 @@ button { font: inherit; color: inherit; }
   font-size: clamp(12px, calc(18 * var(--u)), 27px);
   font-weight: 500;
   line-height: 1.06;
+  text-align: left;
 }
 
 .services__row {
