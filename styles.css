@@ -1045,6 +1045,17 @@ button { font: inherit; color: inherit; }
 }
 .footer__phone:hover { color: var(--lime-soft); }
 
+/* Адрес клиники: две строки, ведёт на карточку 2ГИС */
+.footer__address {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(12px, calc(14 * var(--u)), 15px);
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer__address span { display: block; }
+.footer__address:hover { color: var(--lime-soft); }
+
 .footer__bottom {
   display: flex;
   align-items: center;
