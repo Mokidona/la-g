@@ -54,7 +54,9 @@ docker-compose.yml  запуск за Traefik для kinesiolife.kz
 ә, ғ, қ, ң, ө, ұ, ү, һ, і живут в `cyrillic-ext`).
 
 Изображения отдаются в WebP: `hero.webp`, `specialist-zuhrab.webp`,
-`uploads/manual-table.webp`, `pattern.webp`. Оригиналы `.jpg`/`.png` оставлены
+`uploads/manual-table.webp`, `pattern.webp`. У фото героя три размера
+(`hero-640.webp`, `hero-960.webp`, `hero.webp`) и `srcset` с `sizes`:
+телефон скачивает 29 КБ вместо 97, десктоп — 57 КБ. Оригиналы `.jpg`/`.png` оставлены
 в репозитории как источник, но страницы на них больше не ссылаются (кроме
 `og:image`, которому нужен JPEG для соцсетей). Если меняете фото — положите
 рядом `.webp` с тем же именем и обновите `src`.
