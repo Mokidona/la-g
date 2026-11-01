@@ -178,6 +178,14 @@ button { font: inherit; color: inherit; }
   height: auto;
 }
 
+/* Соцсети в шапке героя крупнее футерных: в исходном макете кружки
+   читались как точки, в том числе на телефоне. */
+.hero__socials .social {
+  width: max(42px, calc(44 * var(--u)));
+  height: max(42px, calc(44 * var(--u)));
+}
+.hero__socials .social img { width: calc(72% + 2px); }
+
 .hero__center {
   margin: calc(117 * var(--u)) auto auto;
   max-width: calc(500 * var(--u));
@@ -820,11 +828,32 @@ button { font: inherit; color: inherit; }
   transform: translateY(.33em);
 }
 
+.reviews__heading {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--u));
+}
+
 .reviews__title {
   font-size: clamp(19px, calc(32 * var(--u)), 45px);
   font-weight: 600;
   line-height: 1.21;
 }
+
+/* Рейтинг и число отзывов берутся из карточки 2ГИС, ссылка ведёт туда же */
+.reviews__source {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  width: fit-content;
+  font-size: clamp(11px, calc(13 * var(--u)), 16px);
+  color: var(--purple);
+  text-decoration: none;
+}
+.reviews__source:hover .reviews__count { text-decoration: underline; }
+.reviews__rating { font-weight: 600; }
+.reviews__badge-stars { display: flex; gap: 2px; }
+.reviews__badge-stars img { width: max(12px, calc(14 * var(--u))); height: auto; }
 
 .reviews__track {
   display: flex;
@@ -840,6 +869,8 @@ button { font: inherit; color: inherit; }
 
 .rev {
   flex: none;
+  display: flex;
+  flex-direction: column;
   width: calc(382 * var(--u));
   min-height: calc(538 * var(--u));
   background: #fff;
@@ -884,6 +915,22 @@ button { font: inherit; color: inherit; }
 
 .rev p { margin-top: calc(16 * var(--u)); }
 .rev p:first-of-type { margin-top: calc(18 * var(--u)); }
+
+.rev__src {
+  margin-top: auto;
+  padding-top: calc(18 * var(--u));
+  font-size: clamp(11px, calc(12.5 * var(--u)), 15px);
+  color: rgba(40, 24, 74, .72);
+  text-decoration: none;
+}
+.rev__src:hover { color: var(--purple); text-decoration: underline; }
+
+.reviews__note {
+  margin: calc(20 * var(--u)) calc(96 * var(--u)) 0;
+  font-size: clamp(11px, calc(12.5 * var(--u)), 15px);
+  line-height: 1.4;
+  color: rgba(40, 24, 74, .72);
+}
 
 .reviews__actions {
   display: flex;
@@ -1115,6 +1162,7 @@ button { font: inherit; color: inherit; }
 
   .reviews__head { padding: 0 calc(40 * var(--u)); }
   .reviews__track { padding-inline: calc(40 * var(--u)); }
+  .reviews__note { margin-inline: calc(40 * var(--u)); }
   .reviews__actions { padding-inline: calc(40 * var(--u)); }
 
   .faq {
@@ -1148,8 +1196,12 @@ button { font: inherit; color: inherit; }
     padding: calc(21 * var(--u)) calc(18 * var(--u)) calc(61 * var(--u));
     min-height: 0;
   }
-  .hero__socials { gap: calc(6 * var(--u)); }
+  .hero__socials { gap: calc(8 * var(--u)); }
   .social { width: calc(23 * var(--u)); height: calc(23 * var(--u)); }
+  .hero__socials .social {
+    width: max(36px, calc(40 * var(--u)));
+    height: max(36px, calc(40 * var(--u)));
+  }
   .lang { padding: 2px; }
   .lang__btn {
     min-height: calc(24 * var(--u));
@@ -1456,6 +1508,7 @@ button { font: inherit; color: inherit; }
   .rev__head { gap: calc(26 * var(--u)); }
   .rev p { margin-top: calc(16 * var(--u)); }
   .rev p:first-of-type { margin-top: calc(18 * var(--u)); }
+  .reviews__note { margin: calc(16 * var(--u)) calc(27 * var(--u)) 0; }
   .reviews__actions { padding: calc(26 * var(--u)) calc(27 * var(--u)) 0; gap: calc(12 * var(--u)); }
   .reviews__actions .btn { width: 100%; }
 
