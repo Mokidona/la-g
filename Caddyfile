@@ -18,7 +18,10 @@
 		-Server
 	}
 
-	respond /healthz "ok" 200
+	# `handle` выполняется раньше `respond`, поэтому health-роут тоже через handle.
+	handle /healthz {
+		respond "ok" 200
+	}
 
 	# Pictures never change under the same name: a week of cache is safe.
 	handle /assets/* {
