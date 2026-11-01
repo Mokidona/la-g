@@ -78,7 +78,7 @@
       <div class="when__left">
         <h2 class="when__title">Когда можно и&nbsp;нужно заниматься</h2>
         <ul class="checklist">
-          <li><span>Реабилитация после инсульта и&nbsp;черепно-мозговых травм (в&nbsp;периоды восстановления)</span></li>
+          <li><span>Реабилитация после инсульта и&nbsp; травм (в&nbsp;периоды восстановления)</span></li>
           <li><span>Хронические и&nbsp;ноющие боли в&nbsp;спине, пояснице или суставах</span></li>
           <li><span>Межпозвоночные грыжи и&nbsp;протрузии</span></li>
           <li><span>Артрозы и&nbsp;артриты суставов 1–3 степени</span></li>
@@ -88,7 +88,7 @@
 
       <div class="when__card">
         <h3 class="when__card-title">Есть диагноз<b>, но&nbsp;вы всё равно сомневаетесь,</b> напишите в&nbsp;нашу службу заботы</h3>
-        <p class="when__card-text">Если у&nbsp;вас нет абсолютных противопоказаний, но&nbsp;вы не&nbsp;уверены, какой курс ЛФК или формат реабилитации выбрать в&nbsp;вашем случае — напишите нашим специалистам в&nbsp;Астане.</p>
+        <p class="when__card-text">Если у&nbsp;вас нет <b>абсолютных противопоказаний</b>, но&nbsp;вы не&nbsp;уверены, какой курс ЛФК или формат реабилитации выбрать в&nbsp;вашем случае — напишите нашим специалистам в&nbsp;Астане.</p>
         <p class="when__card-text">Мы не&nbsp;навязываем лишние услуги — наша задача помочь вам безопасно избавиться от&nbsp;боли.</p>
         <a class="btn btn--purple btn--md" href="tel:+77066887866">Записаться на диагностику</a>
       </div>
@@ -145,17 +145,22 @@
       </article>
       <article class="split">
         <h3 class="split__title">Сплит-формат</h3>
+        <ul class="pkg__list split__list">
+          <li><span class="pkg__ok"><img src="assets/icons/check-purple.svg" alt="" width="13" height="10"></span><span>12 занятий ЛФК в&nbsp;паре</span></li>
+          <li class="is-off"><span>Сеансы мануальной терапии (быстрое снятие боли и&nbsp;зажимов)</span></li>
+          <li class="is-off"><span>Инфракрасное прогревание</span></li>
+        </ul>
+        <p class="pkg__why split__why"><b>Почему выбирают:</b><br><br>Фундамент через движение для тех, кто готов восстанавливаться постепенно.</p>
         <p class="split__price">140 000 тг</p>
         <a class="btn btn--white btn--md" href="tel:+77066887866">Записаться на диагностику</a>
       </article>
     </div>
-    <p class="packages__note">* Перед покупкой абонемента обязательна первичная диагностика<br>Стоимость диагностики — 7000 тг</p>
   </section>
 
   <section class="services" id="services">
     <div class="services__top">
       <figure class="services__media">
-        <img src="assets/uploads/img-1793473879864-b9f72331.png" alt="Мануальный стол" width="1700" height="949">
+        <img src="assets/uploads/manual-table.png" alt="Мануальный стол" width="880" height="418">
       </figure>
       <div class="services__exp">
         <p class="services__num">15</p>
@@ -165,41 +170,51 @@
     </div>
 
     <div class="services__row">
-      <article class="svc svc--massage">
+<article class="svc svc--massage">
         <span class="svc__tag svc__tag--physio">Массаж</span>
-        
-        <p class="svc__lead">вида массажа</p>
-        
-        <div class="svc__foot">
+
+        <p class="svc__desc">Снимает мышечные спазмы, убирает триггерные точки, улучшает кровоток и&nbsp;разгружает суставы без лекарств.</p>
+        <button class="svc__foot svc__foot--btn" type="button" data-price="massage" data-price-title="Массаж" aria-haspopup="dialog" aria-controls="price-modal">
           <span class="svc__prices">смотреть цены</span>
-          <span class="svc__circle" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </div>
+          <span class="svc__circle" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </button>
+
+        <template class="svc__price-data">
+          <li class="price-row"><span class="price-row__name">Классический массаж</span><span class="price-row__meta">60 мин</span><span class="price-row__value">12 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Лечебный массаж спины</span><span class="price-row__meta">45 мин</span><span class="price-row__value">10 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Массаж шейно-воротниковой зоны</span><span class="price-row__meta">30 мин</span><span class="price-row__value">7 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Биоэнергетический массаж</span><span class="price-row__meta">60 мин</span><span class="price-row__value">15 000 тг</span></li></template>
       </article>
-      <article class="svc">
-        
+
+<article class="svc">
+
         <h3 class="svc__title">Мануальный стол</h3>
-        
         <p class="svc__sub">с опытным специалистом</p>
-        <div class="svc__foot">
+        <button class="svc__foot svc__foot--btn" type="button" data-price="table" data-price-title="Мануальный стол" aria-haspopup="dialog" aria-controls="price-modal">
           <span class="svc__prices">смотреть цены</span>
-          <span class="svc__circle" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </div>
+          <span class="svc__circle" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </button>
+
+        <template class="svc__price-data">
+          <li class="price-row"><span class="price-row__name">Сеанс на мануальном столе</span><span class="price-row__meta">45 мин</span><span class="price-row__value">15 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Мануальная терапия</span><span class="price-row__meta">30 мин</span><span class="price-row__value">12 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Стол + мануальная терапия</span><span class="price-row__meta">60 мин</span><span class="price-row__value">22 000 тг</span></li></template>
       </article>
-      <article class="svc svc--ir">
+
+<article class="svc svc--ir">
         <span class="svc__tag svc__tag--physio">Физиотерапия</span><span class="svc__tag svc__tag--ir">Инфракрасное прогревание</span>
-        
+
         <p class="svc__lead">Инфракрасное прогревание</p>
-        <p class="svc__sub">Описание</p>
-        <div class="svc__foot">
+        <p class="svc__desc">Глубокое тепло проникает в&nbsp;ткани, снимает спазмы вокруг суставов, улучшает кровоток и&nbsp;эффективно подготавливает тело к&nbsp;реабилитации.</p>
+        <button class="svc__foot svc__foot--btn" type="button" data-price="ir" data-price-title="Инфракрасное прогревание" aria-haspopup="dialog" aria-controls="price-modal">
           <span class="svc__prices">смотреть цены</span>
-          <span class="svc__circle" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </div>
+          <span class="svc__circle" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </button>
+
+        <template class="svc__price-data">
+          <li class="price-row"><span class="price-row__name">Инфракрасное прогревание</span><span class="price-row__meta">30 мин</span><span class="price-row__value">5 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Прогревание + массаж</span><span class="price-row__meta">60 мин</span><span class="price-row__value">14 000 тг</span></li>
+          <li class="price-row"><span class="price-row__name">Курс из 5 процедур</span><span class="price-row__meta">5 сеансов</span><span class="price-row__value">22 000 тг</span></li></template>
       </article>
     </div>
   </section>
@@ -267,30 +282,30 @@
     </div>
   </section>
 
-  <section class="faq" id="faq">
-    <h2 class="faq__title">Часто <br>задаваемые <br>вопросы</h2>
+    <section class="faq" id="faq">
+    <h2 class="faq__title">Частые <br>вопросы</h2>
 
     <div class="faq__list">
-      <div class="faq-item is-open">
-        <button class="faq-item__q" type="button" aria-expanded="true">
-          <span>С какого возраста доступны детские тренировки?</span>
+      <div class="faq-item">
+        <button class="faq-item__q" type="button" aria-expanded="false">
+          <span>У меня сильная боль в&nbsp;суставах и&nbsp;спине. Разве мне можно заниматься?</span>
           <img class="faq-item__icon" src="assets/icons/close.svg" alt="" width="24" height="24">
         </button>
-        <div class="faq-item__a"><p>Тренировки для детей доступны с&nbsp;6 лет</p></div>
+        <div class="faq-item__a"><p>Не только можно, но и&nbsp;нужно — но только под контролем и&nbsp;по&nbsp;правильной методике. В&nbsp;отличие от&nbsp;обычного фитнеса, где нагрузка идет «на&nbsp;износ», в&nbsp;зале ЛФК мы работаем с&nbsp;причиной боли. Мы снимаем воспаление за&nbsp;счет грамотной разгрузки, включаем «спящие» мышцы-стабилизаторы и&nbsp;подбираем безопасные траектории движения. Движение лечит, если оно правильное.</p></div>
       </div>
-      <div class="faq-item is-open">
-        <button class="faq-item__q" type="button" aria-expanded="true">
-          <span>С какого возраста доступны детские тренировки?</span>
+      <div class="faq-item">
+        <button class="faq-item__q" type="button" aria-expanded="false">
+          <span>Чем ваши тренировки отличаются от&nbsp;обычного фитнес-зала с&nbsp;тренером?</span>
           <img class="faq-item__icon" src="assets/icons/close.svg" alt="" width="24" height="24">
         </button>
-        <div class="faq-item__a"><p>Тренировки для детей доступны с&nbsp;6 лет</p></div>
+        <div class="faq-item__a"><p>Обычный фитнес-тренер ориентирован на&nbsp;похудение, красивые внешние формы и&nbsp;набор массы, часто давая стандартные упражнения (вроде глубоких приседов или жима ногами), которые с&nbsp;проблемными суставами или грыжами делать опасно. Реабилитолог и&nbsp;специалист по&nbsp;ЛФК работает с&nbsp;биомеханикой, учитывает все ваши диагнозы, старые травмы и&nbsp;ограничения, исключает опасную осевую нагрузку и&nbsp;выстраивает безопасную базу для здоровья суставов.</p></div>
       </div>
-      <div class="faq-item is-open">
-        <button class="faq-item__q" type="button" aria-expanded="true">
-          <span>С какого возраста доступны детские тренировки?</span>
+      <div class="faq-item">
+        <button class="faq-item__q" type="button" aria-expanded="false">
+          <span>Обязательно ли пить лекарства параллельно с&nbsp;занятиями?</span>
           <img class="faq-item__icon" src="assets/icons/close.svg" alt="" width="24" height="24">
         </button>
-        <div class="faq-item__a"><p>Тренировки для детей доступны с&nbsp;6 лет</p></div>
+        <div class="faq-item__a"><p>Медикаменты (например, противовоспалительные) снимают только острый симптом — боль и&nbsp;отек, но они не&nbsp;вернут суставу правильную работу и&nbsp;не&nbsp;укрепят мышцы. Наша задача на&nbsp;реабилитации — сделать так, чтобы тело научилось справляться с&nbsp;нагрузкой самостоятельно, убрать патологическое напряжение механическим путем и&nbsp;позволить вам постепенно уйти от&nbsp;постоянной фармакологической помощи.</p></div>
       </div>
     </div>
   </section>
@@ -330,6 +345,25 @@
     </div>
   </footer>
 
+  <!-- МОДАЛКА ЦЕН УСЛУГ -->
+  <div class="modal price-modal" id="price-modal" role="dialog" aria-modal="true" aria-labelledby="price-modal-title" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+
+    <div class="modal__dialog price-modal__dialog">
+      <button class="modal__close" type="button" data-close aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <p class="price-modal__eyebrow">Услуги</p>
+      <h2 class="price-modal__title" id="price-modal-title"></h2>
+
+      <ul class="price-list"></ul>
+
+      <p class="price-modal__note">Стоимость указана за один сеанс. Перед курсом нужна первичная диагностика.</p>
+      <a class="btn btn--purple btn--md price-modal__cta" href="tel:+77066887866">Записаться на диагностику</a>
+    </div>
+  </div>
+
   <!-- МОДАЛКА ЗАПИСИ -->
   <div class="modal" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title" aria-hidden="true">
     <div class="modal__overlay" data-close></div>
@@ -365,10 +399,6 @@
           </span>
           <svg class="modal__option-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-      </div>
-
-      <p class="modal__note"><span>Или позвоните:</span> <a href="tel:+77066887866">+7 706 688 78 66</a></p>
-    </div>
   </div>
 
   <script src="script.js"></script>

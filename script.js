@@ -41,6 +41,8 @@ if (bookingModal) {
   };
 
   document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    /* ссылка в модалке цен не должна открывать окно записи поверх него */
+    if (link.closest('#price-modal')) return;
     link.addEventListener('click', openModal);
   });
 
@@ -61,6 +63,75 @@ if (bookingModal) {
     const items = [...bookingModal.querySelectorAll(FOCUSABLE)].filter(
       (el) => el.offsetParent !== null
     );
+    if (!items.length) return;
+
+    const first = items[0];
+    const last = items[items.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+}
+
+/* Модалка цен услуг: одна на страницу, строки берутся из <template> карточки */
+
+const priceModal = document.getElementById('price-modal');
+
+if (priceModal) {
+  const priceList = priceModal.querySelector('.price-list');
+  const priceTitle = priceModal.querySelector('.price-modal__title');
+  const priceClose = priceModal.querySelector('.modal__close');
+  let priceLastFocused = null;
+
+  const openPrices = (button) => {
+    const card = button.closest('.svc');
+    const template = card && card.querySelector('template.svc__price-data');
+    if (!template) return;
+
+    priceList.replaceChildren(template.content.cloneNode(true));
+    priceTitle.textContent = button.dataset.priceTitle || '';
+    priceLastFocused = button;
+
+    priceModal.classList.add('is-open');
+    priceModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-locked');
+    priceClose.focus({ preventScroll: true });
+  };
+
+  const closePrices = () => {
+    priceModal.classList.remove('is-open');
+    priceModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('is-locked');
+
+    if (priceLastFocused) priceLastFocused.focus({ preventScroll: true });
+  };
+
+  document.querySelectorAll('[data-price]').forEach((button) => {
+    button.addEventListener('click', () => openPrices(button));
+  });
+
+  priceModal.addEventListener('click', (event) => {
+    if (event.target.closest('[data-close]')) closePrices();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!priceModal.classList.contains('is-open')) return;
+
+    if (event.key === 'Escape') {
+      closePrices();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const items = [
+      ...priceModal.querySelectorAll('a[href], button:not([disabled])'),
+    ].filter((el) => el.offsetParent !== null);
     if (!items.length) return;
 
     const first = items[0];
