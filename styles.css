@@ -925,13 +925,6 @@ button { font: inherit; color: inherit; }
 }
 .rev__src:hover { color: var(--purple); text-decoration: underline; }
 
-.reviews__note {
-  margin: calc(20 * var(--u)) calc(96 * var(--u)) 0;
-  font-size: clamp(11px, calc(12.5 * var(--u)), 15px);
-  line-height: 1.4;
-  color: rgba(40, 24, 74, .72);
-}
-
 .reviews__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1176,7 +1169,6 @@ button { font: inherit; color: inherit; }
 
   .reviews__head { padding: 0 calc(40 * var(--u)); }
   .reviews__track { padding-inline: calc(40 * var(--u)); }
-  .reviews__note { margin-inline: calc(40 * var(--u)); }
   .reviews__actions { padding-inline: calc(40 * var(--u)); }
 
   .faq {
@@ -1522,7 +1514,6 @@ button { font: inherit; color: inherit; }
   .rev__head { gap: calc(26 * var(--u)); }
   .rev p { margin-top: calc(16 * var(--u)); }
   .rev p:first-of-type { margin-top: calc(18 * var(--u)); }
-  .reviews__note { margin: calc(16 * var(--u)) calc(27 * var(--u)) 0; }
   .reviews__actions { padding: calc(26 * var(--u)) calc(27 * var(--u)) 0; gap: calc(12 * var(--u)); }
   .reviews__actions .btn { width: 100%; }
 
